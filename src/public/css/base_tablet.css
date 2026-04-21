@@ -1,0 +1,79 @@
+/* 
+	FICHERO CON EL ESTILO PARA TABLET
+	
+	Autor: Robert Sallent
+	Última revisión: 05/02/2024
+*/
+
+
+/* Correcciones de clases genéricas para adaptarlas a pantallas medianas */
+
+
+.pc{display: none !important;}
+
+.tablet{
+	display: initial !important;
+}
+
+.two-columns			{ column-count: 2 }
+.three-columns			{ column-count: 2 }
+.four-columns			{ column-count: 2 }
+
+
+
+/* -------------------------------- LISTAS ---------------------------------*/
+
+.grid-list-header {
+   display: none;
+}
+
+.grid-list-item {
+   grid-template-columns: 1fr;
+   grid-row-gap: 8px;
+}
+
+.grid-list-item span {
+   display: block;
+   font-weight: normal;
+   text-align: left;
+}
+
+.grid-list-item figure{
+	display: block;
+	width: 100%;
+}
+
+
+.grid-list-item span::before {
+   content: attr(data-label) ": ";
+   font-weight: bold;
+}
+
+
+/* ----- Formulario filtro --- */
+#filtro{
+	text-align: left;
+}
+
+#filtro label, 
+#filtro input[type='text'], 
+#filtro input[type='search'], 
+#filtro select{
+	display: block;
+	width: 100%;
+}
+
+#filtro input[type='text'], 
+#filtro input[type='search'],
+#filtro select{
+	margin-bottom: 5px;
+}
+
+#filterFormButton{
+	margin: 20px auto;
+	display: block;
+}
+
+#login{
+	width: 90%;
+}
