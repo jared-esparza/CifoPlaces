@@ -4,10 +4,10 @@
 		<?= $template->metaData(
                 "LogIn",
                 "Acceso a la apliación"
-        ) ?>           
+        ) ?>
         <?= $template->css() ?>
 	</head>
-	
+
 	<body>
 		<?= $template->login() ?>
 		<?= $template->menu() ?>
@@ -17,16 +17,16 @@
     	    ]) ?>
 		<?= $template->messages() ?>
 		<?= $template->acceptCookies() ?>
-		
+
 		<main>
     		<form class="w50 phone100 centered-block my2" method="POST" autocomplete="off" id="login" action="/Login/enter">
-    			
+
     			<?= csrf() ?>
     			<input type="hidden" name="login" value="1">
-    			
+
     			<h2 class="centered">Acceso</h2>
 				<p class="info">Introduce tus datos para identificarte.</p>
-		
+
 				<div class="m1">
         			<label for="email">Email:</label>
         			<input class="long" type="email" name="user" id="email" value="<?= old('user') ?>" required>
@@ -46,16 +46,18 @@
             			</a>
         			</div>
     			</div>
-    			
+
     			<div class="centered my3">
     				<input type="submit" class="button phone75" value="LogIn">
+					<a class='button-light' href='/User/create'>Registro</a>
     			</div>
     			<div class="right phone-centered">
     				<a class="button-light phone75" href="/forgot-password">Olvidé mi clave</a>
-    			</div>	
-    		</form>	
+    			</div>
+
+    		</form>
 		</main>
-		
+
 		<?= $template->footer() ?>
 		<?= $template->version() ?>
 	</body>

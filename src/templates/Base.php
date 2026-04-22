@@ -157,6 +157,7 @@ class Base{
             $html .= "
                 <div class='right' id='login-bar'>
                     <a class='button-light' href='/Login'>Acceso</a>
+                    <a class='button-light' href='/User/create'>Registro</a>
                 </div>";
 
 
