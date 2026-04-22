@@ -244,43 +244,34 @@ class Base{
      */
     public function menu(){
 
-        // script para el botón de la hamburguesa
         $html = "<script src='/js/components/burguerMenu.js'></script>";
 
-        // inicio del menú
         $html .= "<nav id='main-menu'>\n";
 
-        // botón de la hamburguesa (para pantallas pequeñas)
         $html .= "\t<button class='button' id='burger' aria-label='Abrir menú'>
                 <span></span>
                 <span></span>
                 <span></span>
                 </button>";
 
-        // listado de enlaces del menú principal
         $html .= "\t<menu class='menu flex1'>\n";
 
-        // enlace a inicio
         $html .= "\t\t<li><a href='/'>Inicio</a></li>\n";
 
-        // 🔹 listado de lugares
         $html .= "\t\t<li><a href='/Place/list'>Lugares</a></li>\n";
 
-        // 🔹 crear lugar
         if(Place::canCreate()){
             $html .= "\t\t<li><a href='/Place/create'>Nuevo lugar</a></li>\n";
         }
 
-        // 🔹 usuario logueado
         if($user = Login::user()){
             $html .= "\t\t<li><a href='/User/home'>Mi espacio</a></li>\n";
         }
+        $html .= "\t\t<li><a href='/Contacto'>Contactar</a></li>\n";
 
-        // enlace al panel del administrador
         if(Login::oneRole(ADMIN_PANEL_ROLES))
             $html .= "\t\t<li><a href='/Admin'>Panel del administrador</a></li>\n";
 
-        // fin del menú principal
         $html .= "\t</menu>\n";
         $html .= $this->login();
         $html .= "</nav>\n";
