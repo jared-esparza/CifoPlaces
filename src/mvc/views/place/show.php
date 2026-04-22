@@ -84,7 +84,7 @@
                                 <span data-label="Imagen" class="centrado">
                                     <a href="/Photo/show/<?= $photo->id ?>">
                                         <img
-                                            src="/uploads/photos/<?= $photo->file ?: 'default-photo.jpg' ?>"
+                                            src="<?= PHOTO_IMAGE_FOLDER . $photo->file ?: 'default-photo.jpg' ?>"
                                             class="table-image"
                                             alt="<?= $photo->alt ?: $photo->name ?>"
                                         >

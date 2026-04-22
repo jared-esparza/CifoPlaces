@@ -287,6 +287,8 @@ define('UPLOAD_MAX_SIZE', 0);
 define('PLACE_IMAGE_FOLDER', '/images/place/');
 define('DEFAULT_PLACE_IMAGE', 'default_cover.png');
 
+define('PHOTO_IMAGE_FOLDER', '/images/photo/');
+define('DEFAULT_PHOTO_IMAGE', 'default_photo.png');
 
 
 /* -------------------------------------------------------------

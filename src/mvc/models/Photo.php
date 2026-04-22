@@ -68,4 +68,7 @@ class Photo extends Model{
     public function author(){
         return $this->belongsTo('User', 'iduser');
     }
+    public function comments(){
+        return $this->hasMany('V_Comment', 'idphoto');
+    }
 }
