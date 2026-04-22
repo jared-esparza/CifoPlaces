@@ -251,16 +251,29 @@ class Base{
 
         // botón de la hamburguesa (para pantallas pequeñas)
         $html .= "\t<button class='button' id='burger' aria-label='Abrir menú'>
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                 </button>";
+                <span></span>
+                <span></span>
+                <span></span>
+                </button>";
 
         // listado de enlaces del menú principal
         $html .= "\t<menu class='menu flex1'>\n";
 
         // enlace a inicio
         $html .= "\t\t<li><a href='/'>Inicio</a></li>\n";
+
+        // 🔹 listado de lugares
+        $html .= "\t\t<li><a href='/Place/list'>Lugares</a></li>\n";
+
+        // 🔹 crear lugar
+        if(Place::canCreate()){
+            $html .= "\t\t<li><a href='/Place/create'>Nuevo lugar</a></li>\n";
+        }
+
+        // 🔹 usuario logueado
+        if($user = Login::user()){
+            $html .= "\t\t<li><a href='/User/home'>Mi espacio</a></li>\n";
+        }
 
         // enlace al panel del administrador
         if(Login::oneRole(ADMIN_PANEL_ROLES))

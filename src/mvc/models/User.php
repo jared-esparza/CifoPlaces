@@ -199,4 +199,16 @@ class User extends Model{
     public function isAdmin(string $adminRole = 'ROLE_ADMIN'):bool{
         return $this->hasRole($adminRole);
     }
+    public function places(){
+        return $this->hasMany('Place', 'iduser');
+    }
+
+    public function photos(){
+        return $this->hasMany('Photo', 'iduser');
+    }
+
+    public function comments(){
+        return $this->hasMany('Comment', 'iduser');
+    }
 }
+
