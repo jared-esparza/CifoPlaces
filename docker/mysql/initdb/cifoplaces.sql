@@ -24,7 +24,7 @@ CREATE TABLE users(
 
 
 -- usuarios para las pruebas, podéis crear tantos como necesitéis
-INSERT INTO users(id, displayname, email, phone, picture, password, roles) VALUES 
+INSERT INTO users(id, displayname, email, phone, picture, password, roles) VALUES
   (1, 'admin', 'admin@fastlight.org', '000001', 'admin.png', md5('1234'), '["ROLE_USER", "ROLE_ADMIN"]'),
   (2, 'editor', 'editor@fastlight.org', '000002', 'editor.png', md5('1234'), '["ROLE_USER", "ROLE_EDITOR"]'),
   (3, 'user', 'user@fastlight.org', '000003', 'user.png', md5('1234'), '["ROLE_USER"]'),
@@ -32,7 +32,7 @@ INSERT INTO users(id, displayname, email, phone, picture, password, roles) VALUE
   (5, 'api', 'api@fastlight.org', '000005', 'api.png', md5('1234'), '["ROLE_API"]'),
   (6, 'blocked', 'blocked@fastlight.org', '000006', 'blocked.png', md5('1234'), '["ROLE_USER", "ROLE_BLOCKED"]'),
   (7, 'default', 'default@fastlight.org', '000007', NULL, md5('1234'), '[]'),
-  (8, 'Robert', 'robert@fastlight.org', '000008', 'other.png', md5('1234'), '["ROLE_USER", "ROLE_ADMIN", "ROLE_TEST"]')    
+  (8, 'Robert', 'robert@fastlight.org', '000008', 'other.png', md5('1234'), '["ROLE_USER", "ROLE_ADMIN", "ROLE_TEST"]')
 ;
 
 
@@ -58,7 +58,7 @@ CREATE TABLE stats(
     url VARCHAR(250) NOT NULL UNIQUE KEY,
   count INT NOT NULL DEFAULT 1,
   user VARCHAR(128) DEFAULT NULL,
-  ip CHAR(15) NOT NULL, 
+  ip CHAR(15) NOT NULL,
   created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   updated_at TIMESTAMP NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -67,7 +67,7 @@ CREATE TABLE stats(
 
 
 -- ------------------------------------------------------------------------------------
--- PARA EL PROYECTO WEB 
+-- PARA EL PROYECTO WEB
 -- ------------------------------------------------------------------------------------
 
 -- Creación de la tabla para los lugares
@@ -83,8 +83,8 @@ CREATE TABLE places(
     longitude DOUBLE NULL DEFAULT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
-    
-    FOREIGN KEY(iduser) REFERENCES users(id) 
+
+    FOREIGN KEY(iduser) REFERENCES users(id)
 		ON UPDATE CASCADE ON DELETE SET NULL
 );
 
@@ -122,7 +122,7 @@ INSERT INTO places (id, name, type, location, description, mainpicture, iduser, 
 (30, 'Carrer dels Artesans', 'Zona comercial', 'Cubelles, Barcelona', 'Pequeña calle con tiendas de productos locales y artesanía.', 'carrer_artesans.jpg', 5, 41.2076, 1.6728);
 
 
--- Creación de la tabla para las fotos 
+-- Creación de la tabla para las fotos
 CREATE TABLE photos(
 	id INT PRIMARY KEY auto_increment,
     name VARCHAR(128) NOT NULL,
@@ -132,14 +132,14 @@ CREATE TABLE photos(
     date DATE NULL DEFAULT NULL,
     time TIME NULL DEFAULT NULL,
     iduser INT NULL,
-    idplace INT NOT NULL, 
+    idplace INT NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
-    
-	FOREIGN KEY(iduser) REFERENCES users(id) 
+
+	FOREIGN KEY(iduser) REFERENCES users(id)
 		ON UPDATE CASCADE ON DELETE SET NULL,
-    FOREIGN KEY(idplace) REFERENCES places(id) 
-		ON UPDATE CASCADE ON DELETE CASCADE    
+    FOREIGN KEY(idplace) REFERENCES places(id)
+		ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 -- Inserción de 25 registros de ejemplo en la tabla photos
@@ -181,14 +181,14 @@ CREATE TABLE comments(
     idphoto INT NULL,
     idplace INT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    
-    FOREIGN KEY(iduser) REFERENCES users(id) 
+
+    FOREIGN KEY(iduser) REFERENCES users(id)
 		ON UPDATE CASCADE ON DELETE SET NULL,
-        
-    FOREIGN KEY(idplace) REFERENCES places(id) 
-		ON UPDATE CASCADE ON DELETE CASCADE, 
-        
-	FOREIGN KEY(idphoto) REFERENCES photos(id) 
+
+    FOREIGN KEY(idplace) REFERENCES places(id)
+		ON UPDATE CASCADE ON DELETE CASCADE,
+
+	FOREIGN KEY(idphoto) REFERENCES photos(id)
 		ON UPDATE CASCADE ON DELETE CASCADE
 );
 
@@ -301,7 +301,7 @@ VALUES
 -- Vista que muestra los datos de los lugares ampliados
 CREATE OR REPLACE VIEW v_places AS
 SELECT u.displayname AS username, u.picture AS userpicture, pl.*
-FROM places pl LEFT JOIN users u ON pl.iduser = u.id; 
+FROM places pl LEFT JOIN users u ON pl.iduser = u.id;
 
 
 -- Vista que muestra los datos de las fotos ampliados
@@ -311,8 +311,8 @@ FROM photos p LEFT JOIN users u ON p.iduser = u.id
 	LEFT JOIN places pl ON p.idplace = pl.id;
 
 
--- Vista que muestra los datos de los comentarios ampliados 
-CREATE OR REPLACE VIEW v_comments AS 
+-- Vista que muestra los datos de los comentarios ampliados
+CREATE OR REPLACE VIEW v_comments AS
 SELECT u.displayname AS username, u.picture AS userpicture, pl.name AS placename, p.name AS photoname, c.*
 FROM comments c LEFT JOIN users u ON u.id = c.iduser
 	LEFT JOIN photos p ON p.id = c.idphoto

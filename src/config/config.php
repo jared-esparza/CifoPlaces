@@ -284,6 +284,9 @@ define('UPLOAD_FOLDER', '../storage');
 // tamaño máximo para los ficheros subidos en bytes (0 sin límite)
 define('UPLOAD_MAX_SIZE', 0);
 
+define('PLACE_IMAGE_FOLDER', '/images/place/');
+define('DEFAULT_PLACE_IMAGE', 'default_cover.png');
+
 
 
 /* -------------------------------------------------------------
