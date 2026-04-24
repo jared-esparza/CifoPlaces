@@ -44,7 +44,7 @@ class UserController extends Controller{
             }
             $user->update();
             Session::success("Guardado del user $user->displayname correcto.");
-            return redirect("/user/show/$user->id");
+            return redirect("/login");
         }catch(Exception $e){
             echo $e->getMessage();
         }
