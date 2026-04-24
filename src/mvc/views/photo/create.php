@@ -46,7 +46,7 @@
                         <br>
 
                         <label>Imagen:</label>
-                        <input type="file" name="file" id="file-with-preview" accept="image/*">
+                        <input type="file" name="file" id="file-with-preview" accept="image/*" required>
                         <br>
 
                         <label>Descripción:</label>

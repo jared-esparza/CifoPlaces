@@ -9,7 +9,6 @@
 	</head>
 
 	<body>
-		<?= $template->login() ?>
 		<?= $template->menu() ?>
 		<?= $template->header(null, 'Acceso a la aplicación') ?>
 		<?= $template->breadCrumbs([

@@ -76,7 +76,7 @@
                         <input type="hidden" name="idphoto" value="<?= $photo->id ?>">
 
                         <label>Nuevo comentario:</label>
-                        <textarea name="text" class="w100"><?= old('text') ?></textarea>
+                        <textarea name="text" class="w100"></textarea>
                         <br>
 
                         <input type="submit" class="button" name="guardar" value="Comentar">

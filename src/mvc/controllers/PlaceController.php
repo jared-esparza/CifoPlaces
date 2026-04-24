@@ -98,10 +98,10 @@ class PlaceController extends Controller{
     public function edit(int $id = 0){
         $place = Place::findOrFail($id, "No se encontró el lugar.");
 
-        // if(!$place->canEdit()){
-        //     Session::error("No puedes realizar esta operación.");
-        //     return redirect('/');
-        // }
+        if(!$place->canEdit()){
+            Session::error("No puedes realizar esta operación.");
+            return redirect('/');
+        }
 
         $pictures = $place->pictures();
         $comments = $place->comments();
